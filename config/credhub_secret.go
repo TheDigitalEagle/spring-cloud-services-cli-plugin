@@ -1,13 +1,14 @@
 package config
 
 import (
-	"code.cloudfoundry.org/cli/plugin"
 	"errors"
 	"fmt"
+	"regexp"
+
+	"code.cloudfoundry.org/cli/plugin"
 	"github.com/pivotal-cf/spring-cloud-services-cli-plugin/cfutil"
 	"github.com/pivotal-cf/spring-cloud-services-cli-plugin/httpclient"
 	"github.com/pivotal-cf/spring-cloud-services-cli-plugin/serviceutil"
-	"regexp"
 )
 
 type CredHubSecret interface {
@@ -49,7 +50,7 @@ func (r *credHubSecret) Add(configServerInstanceName string, credHubPath string,
 	status, e := r.authenticatedClient.DoAuthenticatedPut(path, "application/json", credHubSecret, accessToken)
 
 	if status != 200 {
-		return errors.New("failed to add secret or is not supported by this config server")
+		return fmt.Errorf("error Mesage: %s | URL: %s response code: %d", "failed to add secret or is not supported by this config server", path, status)
 	}
 
 	if e != nil {
