@@ -5,3 +5,6 @@ build:
 install:
 	cf uninstall-plugin spring-cloud-services
 	cf install-plugin -f spring-cloud-services-cli-plugin
+
+test-secret:
+	

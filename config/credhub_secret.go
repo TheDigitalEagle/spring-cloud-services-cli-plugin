@@ -50,7 +50,7 @@ func (r *credHubSecret) Add(configServerInstanceName string, credHubPath string,
 	status, e := r.authenticatedClient.DoAuthenticatedPut(path, "application/json", credHubSecret, accessToken)
 
 	if status != 200 {
-		return fmt.Errorf("error Mesage: %s | URL: %s response code: %d credhub path: %s InstanceInfo: %s %s %s", "failed to add secret or is not supported by this config server", path, status, credHubPath, configServerInstanceName, credHubPath, credHubPath)
+		return fmt.Errorf("error Mesage: %s | URL: %s response code: %d credhub path: %s InstanceInfo: %s %s %s", "failed to add secret or is not supported by this config server", path, status, credHubPath, configServerInstanceName, serviceInstanceUrl, accessToken)
 	}
 
 	if e != nil {
