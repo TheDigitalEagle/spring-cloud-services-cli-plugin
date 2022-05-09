@@ -1,5 +1,5 @@
 build:
-    rm spring-cloud-services-cli-plugin
+	rm spring-cloud-services-cli-plugin
 	go build -ldflags="-X main.pluginVersion=$(cat version)"
 
 install:
